@@ -49,11 +49,11 @@ There are many different encoding schemes, and they primarily differ by the numb
 
 ### BOM
 
-There are two different types of encoding. BOM (byte order mask) encoding uses bytes at the beginning of a text file to specify the encoding. BOM encoding therefore allows for fast and reliable identification of encoding.
+There are two different types of encoding. **BOM** (*byte order mask*) encoding uses bytes at the beginning of a text file to specify the encoding. **BOM** encoding therefore allows for fast and reliable identification of encoding, and `Get-Encoding` always returns a confidence level of 100% for such files.
 
-BOM encoding however may be incompatible with certain use cases. For example, github and many non-Windows systems do not expect BOM-encoded text files.
+**BOM** encoding however may be incompatible with certain use cases. For example, github and many non-Windows systems do not expect **BOM**-encoded text files.
 
-When text files are encoded without BOM, the encoding must be determined by heuristics. Typically, this is reliable and can be determined by looking only at a fraction of the file. However, when the file is small and when there are no special characters in the file, encoding may be ambiguous.
+When text files are encoded *without* **BOM**, the encoding must be determined by heuristics. Typically, this is reliable, too, and can be determined by looking only at a fraction of the file. However, when the file is small and when there are no special characters in the file, encoding may be ambiguous. The confidence level returned for non-**BOM** files may therefore vary.
 
 ### License
 
