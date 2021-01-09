@@ -1,5 +1,5 @@
 # GetEncoding
-Home of the universal text file encoding checker Get-PsOneEncoding
+Home of the universal text file encoding checker `Get-PsOneEncoding`
 
 ## Install
 Download from PowerShell Gallery:
