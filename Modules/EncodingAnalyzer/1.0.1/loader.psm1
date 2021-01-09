@@ -1,4 +1,8 @@
-﻿
+﻿# this dummy class is used to determine whether
+# a file has a bom encoding:
+class NullEncoder : System.Text.UTF8Encoding
+{
+}
 
 function Get-PsOneEncoding
 {
@@ -53,18 +57,22 @@ function Get-PsOneEncoding
     # load charset detector dll:
     Add-Type -Path $PSScriptRoot\Ude.dll
     $cdet = [Ude.CharsetDetector]::new()
+    $nullEncoder = [NullEncoder]::new()
   }
   process 
   {
     # try and read the BOM encoding:
-    $reader = [System.IO.StreamReader]::new($Path,[Text.Encoding]::Default,$true)
+    # submit a dummy encoder class that is used if the encoding cannot be
+    # determined from BOM. This way we know that additional heuristic
+    # analysis is needed:
+    $reader = [System.IO.StreamReader]::new($Path,$nullEncoder,$true)
     # must read the file at least once to get encoding:
     $null = $reader.Peek()
     $encoding = $reader.CurrentEncoding
     $reader.Close()
     $reader.Dispose()
     # if the encoding equals default encoding then there was no bom:
-    $bom = $encoding -ne [Text.Encoding]::Default
+    $bom = $encoding -ne $nullEncoder
     $bodyname = $encoding.BodyName
     $confidence = 100
     
