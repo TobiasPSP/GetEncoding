@@ -57,6 +57,6 @@ When text files are encoded *without* **BOM**, the encoding must be determined b
 
 ### License
 
-This module uses a port of the original Mozilla Universal Charset Detector published here: https://github.com/errepi/ude
+This module uses a port of the *original Mozilla Universal Charset Detector* published here: https://github.com/errepi/ude
 
-My work (the PowerShell part) is under MIT license so you can do pretty much whatever you like with it. However the heuristic analysis is performed by said DLL which is governed by more restrictive licensing terms (see there).
+My work (the *PowerShell* part) is under MIT license so you can do pretty much whatever you like with it. However the heuristic analysis is performed by said DLL which is governed by more restrictive licensing terms (see there).
