@@ -1,7 +1,7 @@
 ﻿
 @{
 RootModule = 'loader.psm1'
-ModuleVersion = '1.0.1'
+ModuleVersion = '1.0.2'
 GUID = 'bbd0483d-57b3-45ce-a4e4-744ab1cfb8c8'
 Author = 'Dr. Tobias Weltner'
 CompanyName = 'https://powershell.one'
