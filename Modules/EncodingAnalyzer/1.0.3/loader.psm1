@@ -85,6 +85,13 @@ function Get-PsOneEncoding
       $cdet.DataEnd()
       $bodyname = $cdet.Charset
       $confidence = [int]($cdet.Confidence * 100)
+      # add a workaround for the awkward default encoding created
+      # by Set-Content on Windows PowerShell:
+      if ($confidence -eq 0 -and $bodyname -eq $null)
+      {
+        $confidence = 25
+        $bodyname = 'ANSI'
+      }
       $stream.Close()
       $stream.Dispose()
     }
